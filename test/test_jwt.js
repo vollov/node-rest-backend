@@ -40,4 +40,11 @@ describe('Test API', function() {
       .set('Authorization', 'Bearer ' + token)
       .expect(200, done);
   });
+  
+  it('should be able to consume /api/users since token was sent', function(done) {
+	    request(url)
+	      .get('/api/users')
+	      .set('Authorization', 'Bearer ' + token)
+	      .expect(200, done);
+	  });
 });
