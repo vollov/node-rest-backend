@@ -45,6 +45,20 @@ describe('Test API', function() {
 	    request(url)
 	      .get('/api/users')
 	      .set('Authorization', 'Bearer ' + token)
-	      .expect(200, done);
-	  });
+	      .expect(200)
+	      .end(function(err, res) {
+				if (err) {
+					return done(err);
+					//throw err;
+				}
+				
+				//var result = JSON.parse(res.payload);
+				
+				console.log('GET messages = %j', res.text);
+				console.log('GET messages = %j', res);
+				//message_id_list.push(res.body._id)
+				//res.body.should.have.property('title', 'once we have specified the info we');
+				done();
+			});
+  });
 });

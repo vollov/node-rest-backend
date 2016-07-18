@@ -11,7 +11,8 @@ var expressJwt = require('express-jwt');
 var cfg = require('./config');
 
 var jwt = require('jsonwebtoken');
-var jwt_auth = expressJwt({secret: cfg.jwt.secret});
+//requestProperty, , userProperty: 'payload'
+var jwt_auth = expressJwt({secret: cfg.jwt.secret, userProperty: 'payload'});
 
 var _ = require('underscore');
 var bunyan = require('bunyan');
