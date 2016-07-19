@@ -53,7 +53,7 @@ app.get('/api/protected', jwt_auth, function(req, res) {
 });
 
 var users = require('./routes/users');
-app.use('/api/', users);
+app.use('/api/users', users);
 
 //app.use(function(err, req, res, next) {
 //  res.status(err.status || 500).send(err);

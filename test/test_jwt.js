@@ -1,4 +1,5 @@
 var request = require('supertest');
+var should = require('should');
 //var app = require('../jwt-demo.8000.js');
 var cfg = require('../config.js');
 
@@ -41,24 +42,28 @@ describe('Test API', function() {
       .expect(200, done);
   });
   
-  it('should be able to consume /api/users since token was sent', function(done) {
-	    request(url)
-	      .get('/api/users')
-	      .set('Authorization', 'Bearer ' + token)
-	      .expect(200)
-	      .end(function(err, res) {
-				if (err) {
-					return done(err);
-					//throw err;
-				}
-				
-				//var result = JSON.parse(res.payload);
-				
-				console.log('GET messages = %j', res.text);
-				console.log('GET messages = %j', res);
-				//message_id_list.push(res.body._id)
-				//res.body.should.have.property('title', 'once we have specified the info we');
-				done();
-			});
-  });
+//  it('should be able to consume /api/users since token was sent', function(done) {
+//	    request(url)
+//	      .get('/api/users')
+//	      .set('Authorization', 'Bearer ' + token)
+//	      .expect(200)
+//	      .end(function(err, res) {
+//				if (err) {
+//					return done(err);
+//					//throw err;
+//				}
+//				
+//				var result = JSON.parse(res.text);
+//				
+//				console.log('GET messages res = %j', res);
+//				console.log('GET messages = %j t=%s', result, result.user);
+//				result.should.be.json;
+//				//message_id_list.push(res.body._id)
+//				result.should.have.property('user', 'dustin');
+//				result.should.have.properties({
+//				    user: 'dustin'
+//				});
+//				done();
+//			});
+//  });
 });
