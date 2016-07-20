@@ -32,6 +32,7 @@ app.use(bodyParser.json({ limit: '1mb' }));
 
 app.use(cookieParser());
 app.use(favicon(__dirname + '/favicon.ico'));
+app.use(express.static(__dirname + '/public'));
 
 app.post('/api/token', function(req, res) {
 	//console.log(util.inspect(req, {showHidden: false, depth: null}));
@@ -54,6 +55,10 @@ app.get('/api/protected', jwt_auth, function(req, res) {
 
 var users = require('./routes/users');
 app.use('/api/users', users);
+
+app.get('*', function(req,res){
+	res.sendfile('index.html', { root: path.resolve(__dirname + '/public') });
+})
 
 //app.use(function(err, req, res, next) {
 //  res.status(err.status || 500).send(err);
